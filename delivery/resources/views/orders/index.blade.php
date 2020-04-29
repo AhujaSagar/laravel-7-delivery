@@ -2,7 +2,7 @@
 
 @section('main') 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <h1 class="display-3">Orders</h1> 
     </div>
 
@@ -15,7 +15,7 @@
       {{ csrf_field() }}
       <div class="input-group">
       <input type="text" class="form-control" name="q"
-            placeholder="Search order"> <span class="input-group-btn">
+            placeholder="Search option"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
@@ -23,6 +23,19 @@
       </div>
     </form>
   </div>
+  <div class="col-sm-2">
+
+  <form action="/filter" method="POST" role="search"  >
+      {{ csrf_field() }}
+<select id="type" name="sel" class="form-control" onchange="this.form.submit()">
+  <option value="All">Category</option>
+  <option value="Diary">Diary</option>
+  <option value="Breakfast">Breakfast</option>
+  <option value="Grocery">Grocery</option>
+  <option value="Beauty">Beauty</option>
+</select>
+</form>
+</div>
 </div>
 
 <div class="col-sm-12"> 

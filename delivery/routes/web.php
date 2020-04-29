@@ -24,12 +24,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::any('/search',function(){
-    $q = Request::get ( 'q' );
-    $order = Order::where('name','LIKE','%'.$q.'%')->get();
-    if(count($order) > 0)
-        return view('orders.index')->withDetails($order)->withQuery ( $q );
-    else return view ('orders.index')->withMessage('No Details found. Try to search again !');
-});
+Route::post('/search', 'SearchController@search');
 
-// Route::get('generate-pdf','PDFController@generatePDF');
+Route::post('/filter', 'SearchController@filter');
